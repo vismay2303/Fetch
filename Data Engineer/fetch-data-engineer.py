@@ -99,7 +99,7 @@ def main():
     pg_conn['user'] ='postgres'
     pg_conn['password'] ='postgres'
     pg_conn['host'] ='localhost'
-    pg_conn['port'] ='5433'
+    pg_conn['port'] ='5432'
 
     response = getMessages(sqs, queue_url)
     records = process_response(response)
