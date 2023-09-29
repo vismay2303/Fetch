@@ -1,0 +1,5 @@
+1. Converting app_version to int to be added into the table as per the final DDL.
+2. In case of big data, PySpark or AWS Glue will be a better way to process such data.
+3. To mask sensitive information, we use one-way hasing techniques like SHA256 or MD5 to preserve uniqueness and keep it ready for comparison purposes.
+4. For connecting and writing to Postgres, we can use the `psycopg2` library in Python.
+5. We use boto3 client for SQS to access the local endppoint queue url

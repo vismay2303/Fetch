@@ -1,0 +1,27 @@
+1. How would you deploy this application in production?
+    > Use a container orchestration tool like Kubernetes or Amazon ECS to manage and scale the containers effectively. This allows automatic scaling of the ETL application based on demand and provides fault tolerance.
+    > Implement comprehensive monitoring and logging solutions to track the health, performance, and issues of the ETL pipeline. Tools like AWS CloudWatch, Prometheus, Grafana, or ELK stack can be used for this purpose.
+    > Use version control (e.g., Git) to manage the codebase and configuration files of the ETL application.
+    > Implement a CI/CD pipeline to automate the deployment process and ensure smooth updates and rollbacks.
+    > Create clear and detailed documentation and runbooks for the ETL application, covering its architecture, deployment, troubleshooting, and maintenance procedures.
+
+2.  What other components would you want to add to make this production ready?
+    > Implement data quality checks during the ETL process to validate the integrity of data before loading it into the database.
+    > If the ETL application has multiple instances, consider using a load balancer to distribute the load evenly and automatically scale the application based on demand.
+    > Set up tools or processes to track data lineage, ensuring visibility and traceability of data throughout the pipeline.
+    > Monitor is some other tenants are using the same data to create a pipeline and if there is some other using the same data or resource.
+
+3. How can this application scale with a growing dataset.
+    > If applicable, consider sharding the data across multiple database nodes to distribute the load and improve query performance.
+    > Partition the data based on key attributes, enabling parallel processing and efficient data retrieval.
+    > Use Distributed Data Processing: Implement distributed data processing frameworks like Apache Spark or AWS Glue, which can scale horizontally to handle large volumes of data.
+
+4. How can PII be recovered later on?
+    > MD5 and SHA256 are types of hashing used to mask such values. However, I used SHA 256 over MD5 since MD5 is generally weaker and susceptible to rainbow table attacks. 
+    > PII cannot be recovered in both cases, however it can used for comparison purposes.
+
+
+5. What are the assumptions you made?
+    >  SQS Queue contains JSON data with a consistent structure making sure that all the required fields are present.
+    > The PII data (IP and device_id) is masked using a one-way hashing algorithm (e.g., SHA-256) ensuring that the original data cannot be easily recovered.
+    > The DDL statement in postgres is accurate.
